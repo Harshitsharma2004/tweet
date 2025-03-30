@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body p-4">
+                    <h2 class="text-center text-primary fw-bold">Create an Account</h2>
+                    <p class="text-center text-muted">Join us today!</p>
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="text-danger small">
+                                    {% for error in field.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary w-100 py-2">🚀 Register</button>
+                    </form>
+                    <p class="text-center mt-3">Already have an account? 
+                        <a href="{% url 'login' %}" class="fw-bold text-primary">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Utility Classes for Styling -->
+<style>
+    .card {
+        border-radius: 12px;
+    }
+    input, select, textarea {
+        border-radius: 8px !important;
+    }
+</style>
+{% endblock %}

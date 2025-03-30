@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+SwiftSparrow
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-dark text-white text-center py-5">
+    <h1>Welcome to my Twitter app</h1>
+    <p class="lead">Create or Edit your tweet below</p>
+</section>
+
+<!-- Form Section -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header text-center bg-primary text-white">
+                    <h3>
+                        {% if form.instance.pk %}
+                        Edit Tweet
+                        {% else %}
+                        Create Tweet
+                        {% endif %}
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.as_p }}
+                        </div>
+                        <button class="btn btn-warning btn-block" type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'tweet_list' %}" class="btn btn-outline-secondary btn-sm">Back to main page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

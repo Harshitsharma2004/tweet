@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+SwiftSparrow
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-dark text-white text-center py-5">
+    <h1>Welcome to my Twitter app</h1>
+    <p class="lead">Stay connected and share your thoughts</p>
+    <a class="btn btn-outline-light btn-lg" href="{% url 'tweet_create' %}">Create a Tweet</a>
+</section>
+
+<!-- Tweet Display Section -->
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gap-4">
+        {% for tweet in tweets %}
+        <div class="col">
+            <div class="card shadow-sm h-100">
+                <img src="{{ tweet.photo.url }}" class="card-img-top" alt="Tweet Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ tweet.user.username }}</h5>
+                    <p class="card-text">{{ tweet.text }}</p>
+                    {% if tweet.user == user %}
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

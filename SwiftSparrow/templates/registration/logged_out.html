@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-lg text-center p-4">
+                <div class="card-body">
+                    <h2 class="text-danger fw-bold">🚪 Logged Out</h2>
+                    <p class="text-muted">You have successfully logged out.</p>
+                    <a href="{% url 'login' %}" class="btn btn-primary px-4 py-2">🔑 Login Again</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Utility Classes for Styling -->
+<style>
+    .card {
+        border-radius: 12px;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+SwiftSparrow
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-dark text-white text-center py-5">
+    <h1>Welcome to SwiftSparrow</h1>
+    <p class="lead">Your place to share thoughts, ideas, and moments with the world.</p>
+    <a class="btn btn-primary btn-lg mt-3" href="{% url 'tweet_list' %}">Explore Tweets</a>
+</section>
+
+{% endblock %}
